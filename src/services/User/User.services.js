@@ -17,6 +17,16 @@ const CreateUser = async (data) => {
     }
 }
 
+const getAllUsers = async () => {
+    try {
+        const users = await db.User.findAll()
+        return users
+    } catch (error) {
+        
+    }
+}
+
 models.exports = {
-    CreateUser
+    CreateUser,
+    getAllUsers
 }

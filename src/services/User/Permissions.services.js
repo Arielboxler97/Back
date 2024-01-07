@@ -13,6 +13,16 @@ const CreatePermission = async (data) => {
     }
 }
 
+const getAllPermission = async () => {
+    try {
+        const permissions = db.Perermission.findAll()
+        return permissions
+    } catch (error) {
+        
+    }
+}
+
 models.exports = {
-    CreatePermission
+    CreatePermission,
+    getAllPermission
 }

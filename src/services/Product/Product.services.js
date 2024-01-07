@@ -19,7 +19,16 @@ const CreateProduct = async (data) => {
     }
 }
 
+const getAllProducts = async () => {
+    try {
+        const products = await db.Product.findAll()
+        return products
+    } catch (error) {
+        
+    }
+}
 
 module.exports = {
-    CreateProduct
+    CreateProduct,
+    getAllProducts
 }

@@ -9,12 +9,22 @@ const CreateAttention = async (data) => {
             day,
             placeId
         })
-        return newAte
+        res.json(newAte)
     } catch (error) {
         
     }
 }
 
+const getAllAttention = async () => {
+    try {
+        const attentionHours = await db.AttentionHours.findAll()
+        return attentionHours
+    } catch (error) {
+       
+    }
+}
+
 models.exports = {
-    CreateAttention
+    CreateAttention,
+    getAllAttention
 }

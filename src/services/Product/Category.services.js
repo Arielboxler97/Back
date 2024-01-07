@@ -12,6 +12,16 @@ const CreateCategory = async (data) => {
     }
 }
 
+const getAllCategoy = async () => {
+    try {
+        const categories = await db.Category.findAll()
+        return categories
+    } catch (error) {
+        
+    }
+}
+
 models.exports = {
-    CreateCategory
+    CreateCategory,
+    getAllCategoy
 }

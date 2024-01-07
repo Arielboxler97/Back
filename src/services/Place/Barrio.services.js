@@ -1,16 +1,26 @@
 const db = require('../../database/models')
 
-const CreateBarrio = async (data) => {
+const CreateBarrio = async (req,res) => {
     try {
-        const {name} = data
+        const {name} = req
         const newBarrio = await db.Barrio.create( {
             name
         })
-        return newBarrio
+        res.json(newBarrio)
     } catch (error) {
         
     }
 }
-models.exports={
-    CreateBarrio
+
+const getAllBarrios = async () => {
+    try {
+        const barrios = await db.Barrio.findAll()
+        return barrios
+    } catch (error) {
+       
+    }
+}
+models.exports ={
+    CreateBarrio,
+    getAllBarrios
 }

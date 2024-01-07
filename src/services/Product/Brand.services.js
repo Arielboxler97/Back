@@ -12,6 +12,16 @@ const CreateBrand = async (data) => {
     }
 }
 
+const getAllBrand = async () => {
+    try {
+        const brand = await db.Brand.findAll()
+        return brand
+    } catch (error) {
+        
+    }
+}
+
 models.exports = {
-    CreateBrand
+    CreateBrand,
+    getAllBrand
 }

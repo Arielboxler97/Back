@@ -24,7 +24,16 @@ const CreatePlace = async (data) => {
     }
 }
 
+const getAllPlace = async () => {
+    try {
+        const place = await db.Place.findAll()
+        return place
+    } catch (error) {
+        
+    }
+}
 
 models.exports = {
-    CreatePlace
+    CreatePlace,
+    getAllPlace
 }
