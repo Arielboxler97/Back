@@ -8,6 +8,7 @@ module.exports = async (req, res) => {
         console.log('Data received in the controller:', req.body);
         
         if (name && price && description) {
+            console.log("Dentro del if");
             const newProduct = {
                 name,
                 price,
@@ -18,6 +19,7 @@ module.exports = async (req, res) => {
             await CreateProduct(newProduct);
            return res.status(201).json({ message: 'Product created successfully' });
         } else {
+            console.log("Hubo un problemilla");
          return res.status(400).json({ message: 'Missing required fields' });
         }
     } catch (error) {
