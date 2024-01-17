@@ -1,24 +1,27 @@
-const sv = require('../../services/Product/Product.services');
+const {CreateProduct} = require('../../services/Product/Product.services');
 
 module.exports = async (req, res) => {
+    
     try {
         const { name, price, description, brandId, placeId } = req.body;
 
-        if (name && price && description && brandId && placeId) {
+        console.log('Data received in the controller:', req.body);
+        
+        if (name && price && description) {
             const newProduct = {
                 name,
                 price,
                 description,
-                brandId,
-                placeId
+                brandId: brandId || null,
+                placeId: placeId || null
             };
-            await sv.CreateProduct(newProduct);
-            res.status(201).json({ message: 'Product created successfully' });
+            await CreateProduct(newProduct);
+           return res.status(201).json({ message: 'Product created successfully' });
         } else {
-            res.status(400).json({ message: 'Missing required fields' });
+         return res.status(400).json({ message: 'Missing required fields' });
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Internal Server Error' });
+      return res.status(500).json({ message: 'Internal Server Error' });
     }
 };

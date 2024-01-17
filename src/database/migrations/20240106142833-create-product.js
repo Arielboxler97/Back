@@ -20,6 +20,7 @@ module.exports = {
       },
       brandId: {
         type: Sequelize.INTEGER,
+        allowNull: true,
         references:{
           model : "Brands",
           key : "id"
@@ -27,6 +28,7 @@ module.exports = {
       },
       placeId: {
         type: Sequelize.INTEGER,
+        allowNull: true,
         references:{
           model : "Places",
           key : "id"

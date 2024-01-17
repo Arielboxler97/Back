@@ -1,8 +1,10 @@
-const sv = require('../../services/Product')
+const sv = require('../../services/Product/Product.services')
 
 module.exports = async (req,res) => {
     try {
-        res.json(sv.getAllProducts()) 
+        console.log("todo ok"); 
+        return res.json(sv.getAllProducts())
+        
     } catch (error) {
         
     }
