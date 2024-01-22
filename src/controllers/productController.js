@@ -1,5 +1,7 @@
 
 module.exports = {
+    all : require('./products/all'),
+    detail : require('./products/detail'),
     create : require('./products/create'),
-    getProduct : require('./products/getProduct')
+    update : require('./products/update')
 }
