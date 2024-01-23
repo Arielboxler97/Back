@@ -105,9 +105,51 @@ const updateProduct = async (id, data) => {
     }
 };
 
+
+const deleteProduct = async (id) => {
+    try {
+        
+        if(!id){
+            throw {
+                status : 400,
+                message: 'El id no existe'
+            }
+        }
+
+        const product = await db.Product.findByPk(id,{
+            attributes: {
+                exclude: ['createdAt', 'updatedAt']
+            },
+        })
+
+        if(!product){
+            throw {
+                status :400,
+                message : 'No hay producto con ese id crack'
+            }
+        }
+        
+        
+        await product.destroy()
+
+        return {
+            status: 200,
+            message : 'El producto fue eliminado crack'
+        }
+
+
+    } catch (error) {
+        throw {
+            status: error.status || 500,
+            message: error.message || 'Error en el servicio de eliminación'
+        };
+    }
+}
+
 module.exports = {
     CreateProduct,
     getAllProducts,
     updateProduct,
-    getProductById
+    getProductById,
+    deleteProduct
 }
