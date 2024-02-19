@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const productsRouter = require('./src/router/product');
-const placesRouter = require('./src/router/place')
+const productsRouter = require('./src/router/product.routes');
+const placesRouter = require('./src/router/place.routes')
+const usersRouter = require('./src/router/user.routes')
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 });
 app.use('/places', placesRouter);
 app.use('/products', productsRouter);
+app.use('/users', usersRouter);
 
 const PORT = process.env.PORT || 3001;
 

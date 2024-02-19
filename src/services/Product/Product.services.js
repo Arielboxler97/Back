@@ -26,8 +26,14 @@ const getAllProducts = async () => {
     try {
         const products = await db.Product.findAll({
             attributes: {
-                exclude: ['createdAt', 'updatedAt']
+                exclude: ['createdAt', 'updatedAt', 'placeId', 'brandId']
             },
+            include : [
+                {
+                    association : 'brand',
+                    attributes : ['id', 'name']
+                },
+            ],
         })
         return products
     } catch (error) {
@@ -79,8 +85,14 @@ const updateProduct = async (id, data) => {
         // Encuentra el producto por su ID para saber si existe y te ofrece el modelo completo
         const existingProduct = await db.Product.findByPk(id,{
             attributes: {
-                exclude: ['createdAt', 'updatedAt']
+                exclude: ['createdAt', 'updatedAt', 'placeId', 'brandId']
             },
+            include : [
+                {
+                    association : 'brand',
+                    attributes : ['id', 'name']
+                },
+            ],
         });
 
         if (!existingProduct) {
